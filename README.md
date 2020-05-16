@@ -4,7 +4,7 @@
 
 <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/resources/icon.png" width="150">
 
-## View all of the APIs in postman
+## View all of the APIs on hosted postman docs
 
 Link: `https://documenter.getpostman.com/view/6651486/SzmmTEL4?version=latest`
 
