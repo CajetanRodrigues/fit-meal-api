@@ -6,6 +6,10 @@ from flask_cors import CORS
 from pymongo import MongoClient
 import pymongo
 import re
+from bson.objectid import ObjectId
+from datetime import datetime
+import datetime
+import pytz
 
 client = MongoClient('mongodb+srv://admin:admin@cluster0-qbkxj.mongodb.net/test?retryWrites=true&w=majority',27017)
 # client=MongoClient('localhost',27017)
@@ -46,16 +50,24 @@ def login():
         document['_id'] = str(document['_id'])
         response.append(document)
     flag=0
+    userId = ''
     for i in range(0,len(response)):
         emailreg=response[i]["email"]
         passwordreg=response[i]["password"]
+        userId=response[i]['_id']
+        
         if(password==passwordreg and email==emailreg):
             flag=1
             break
     if(flag==1):
-        return json.dumps(True)
+        return json.dumps({
+            'userId' : userId,
+            'status': True
+            })
     else:
-        return json.dumps(False)
+        return json.dumps({
+            'status': False
+            })
 
 @app.route('/read-profile', methods = ["GET"]) 
 def readProfile():
@@ -68,14 +80,14 @@ def readProfile():
 @app.route('/add-bmi', methods = ["POST"]) 
 def addBMI():
     data=request.json
-    email = "cajetanrodrigues88@gmail.com"
     print(data)
+    userId = data['userId']
     gender=data['gender']
     age=data['age']
     height=data['height']
     weight=data['weight']
     try:
-            myquery = { "email": "cajetanrodrigues88@gmail.com" }
+            myquery = { "_id": ObjectId(userId) }
             newvalues = { "$set": { "gender": gender} }
             users.update_one(myquery, newvalues)
             newvalues = { "$set": { "age": age} }
@@ -93,14 +105,14 @@ def addBMI():
 @app.route('/add-info', methods = ["POST"]) 
 def addInfo():
     data=request.json
-    email = "cajetanrodrigues88@gmail.com"
+    userId = data['userId']
     print(data)
     goal=data['goal']
     activityLevel=data['activityLevel']
     bodyType=data['bodyType']
     mealsNumber=data['mealsNumber']
     try:
-            myquery = { "email": "cajetanrodrigues88@gmail.com" }
+            myquery = { "_id": ObjectId(userId) }
             newvalues = { "$set": { "goal": goal} }
             users.update_one(myquery, newvalues)
             newvalues = { "$set": { "activityLevel": activityLevel} }
@@ -115,10 +127,17 @@ def addInfo():
     
     return json.dumps(True)
 
-@app.route('/read-meals', methods = ["GET"]) 
+@app.route('/read-meals', methods = ["POST"]) 
 def readMeals():
     response = []
-    documents=meals.find()
+    data = request.json;
+    skipCount = data['skipCount']
+    pageNumber = data['pageNumber']
+    if(skipCount==0) :
+        documents=meals.find().skip(skipCount*pageNumber).limit(4)
+    else:
+        documents=meals.find().skip(skipCount*pageNumber).limit(skipCount)
+    
     for document in documents:
         document['_id'] = str(document['_id'])
         response.append(document)
@@ -178,19 +197,37 @@ def readRoutines():
         response.append(document)
     return json.dumps(response)
 
-
 @app.route('/add-routine', methods = ["POST"]) 
 def addRoutine():
     data = request.json
     print(data)
+    timezone = 'UTC'
+    timestamp = str(datetime.datetime.now(tz=pytz.utc))
+    date = timestamp[0:11]
+    time = timestamp[11:26]
     userId = data['userId']
     routineName=data['routineName']
     routineFramed=data['routineFramed']
     try:
-        routines.insert_one({"userId": userId, "routineName": routineName, "routineFramed":routineFramed})
+        routines.insert_one({"userId": userId ,"date": date, "time": time,"timeZone": timezone, "userId": userId, "routineName": routineName, "routineFramed":routineFramed})
     except pymongo.errors.DuplicateKeyError as e:
         print(e)
         return json.dumps(False)
+    return json.dumps(True)
+
+@app.route('/update-routine', methods = ["POST"]) 
+def updateRoutine():
+    data=request.json
+    routineId = data['routineId']
+    routineFramed = data['routineFramed']
+    try:
+            myquery = { "_id": ObjectId(routineId) }
+            newvalues = { "$set": { "routineFramed": routineFramed} }
+            routines.update_one(myquery, newvalues)
+    except pymongo.errors.DuplicateKeyError as e:
+            print(e)
+            return json.dumps(False)
+    
     return json.dumps(True)
 
 
@@ -239,4 +276,4 @@ def frameRoutine():
     return json.dumps(routine)
 
 if __name__ == '__main__':  
-    app.run(host='0.0.0.0',port=80,debug = True)
+    app.run(host='127.0.0.1',port=80,debug = True)
