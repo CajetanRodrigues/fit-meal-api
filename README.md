@@ -1,5 +1,7 @@
-# Fit Meal RESTful APIs
-RESTful APIs for organising meals, planning meal routines, and other potential functions.
+# Fit Meal API
+
+##RESTful APIs for organising meals, planning meal routines, and other potential functions.
+
 <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/resources/icon.png" width="150">
 <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/intro.PNG" width="250">
 
