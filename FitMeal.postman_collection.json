@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "02b3f02c-71ee-4d29-bd6b-0fbd89ace933",
+		"name": "FitMeal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GoogleImageSearch",
+			"item": [
+				{
+					"name": "searchImages",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"searchQuery\": \"brocolli\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "13.127.91.5/searchImages",
+							"host": [
+								"13",
+								"127",
+								"91",
+								"5"
+							],
+							"path": [
+								"searchImages"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Meals",
+			"item": [
+				{
+					"name": "read-meals",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/read-meals",
+							"protocol": "http",
+							"host": [
+								"ec2-13-127-91-5",
+								"ap-south-1",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"read-meals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-meals",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n {\r\n   \"Item\": \"Potato\",\r\n   \"Benefits\": \"Heart Health,Good Antioxidant\",\r\n   \"Protein\": 2,\r\n   \"Carbohydrates\": 17,\r\n   \"Fats\": 0.1,\r\n   \"Calories\": 77,\r\n   \"Image\": \"https://rukminim1.flixcart.com/image/352/352/jtsz3bk0/vegetable/b/8/4/2-potato-un-branded-no-whole-original-imafdsymh2aepaph.jpeg?q=70\",\r\n   \"Quantity\": 0\r\n },\r\n {\r\n   \"Item\": \"Oats\",\r\n   \"Benefits\": \"Good Anti-Oxidant\",\r\n   \"Protein\": 16.9,\r\n   \"Carbohydrates\": 66.3,\r\n   \"Fats\": 6.9,\r\n   \"Calories\": 389,\r\n   \"Image\": \"https://www.indianbeauty.tips/wp-content/uploads/2014/09/RolledOats.jpg\",\r\n   \"Quantity\": 0\r\n },\r\n {\r\n   \"Item\": \"Honey\",\r\n   \"Benefits\": \"Healer, Soothes throat, Atletic performance\",\r\n   \"Protein\": 0.3,\r\n   \"Carbohydrates\": 82,\r\n   \"Fats\": 0,\r\n   \"Calories\": 304,\r\n   \"Image\": \"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-183354852-1558479028.jpg\",\r\n   \"Quantity\": 0\r\n },\r\n {\r\n   \"Item\": \"Dates\",\r\n   \"Benefits\": \"Bone health, Brain function, Good Anti-Oxidant\",\r\n   \"Protein\": 2,\r\n   \"Carbohydrates\": 75,\r\n   \"Fats\": 0.03,\r\n   \"Calories\": 277,\r\n   \"Image\": \"https://ratinkhosh.com/wp-content/uploads/2019/09/What-are-dates-and-what-do-they-taste-like.jpg\",\r\n   \"Quantity\": 0\r\n },\r\n {\r\n   \"Item\": \"Milk\",\r\n   \"Benefits\": \"Bone Health, Immune System, Promotes Greater gains\",\r\n   \"Protein\": 3.4,\r\n   \"Carbohydrates\": 5,\r\n   \"Fats\": 1,\r\n   \"Calories\": 42,\r\n   \"Image\": \"https://www.readersdigest.ca/wp-content/uploads/2018/09/is-milk-good-for-you.jpg\",\r\n   \"Quantity\": 0\r\n },\r\n {\r\n   \"Item\": \"Banana\",\r\n   \"Benefits\": \"Heart Health, Blood Pressure, Boosts Metabolism\",\r\n   \"Protein\": 1.1,\r\n   \"Carbohydrates\": 22.8,\r\n   \"Fats\": 0.3,\r\n   \"Calories\": 89,\r\n   \"Image\": \"https://images-na.ssl-images-amazon.com/images/I/61fZ%2BYAYGaL._SL1500_.jpg\",\r\n   \"Quantity\": 0\r\n }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:80/add-meals",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"add-meals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "frame-routine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"totalProteins\" : 12,\n\t\"totalCarbs\": 125,\n\t\"totalCalories\": 1245,\n\t\"basket\": [\n\t\t\n    {\n        \"_id\": \"5ebe76ef135f3abb2e814b04\",\n        \"item\": \"Milk\",\n        \"benefits\": \"Bone Health, Immune System, Promotes Greater gains\",\n        \"protein\": 3.4,\n        \"carbohydrates\": 5,\n        \"fats\": 1,\n        \"image\": \"https://www.readersdigest.ca/wp-content/uploads/2018/09/is-milk-good-for-you.jpg\",\n        \"quantity\": 0,\n        \"calories\": \"42\"\n    },\n    {\n        \"_id\": \"5ebe76f0135f3abb2e814b05\",\n        \"item\": \"Banana\",\n        \"benefits\": \"Heart Health, Blood Pressure, Boosts Metabolism\",\n        \"protein\": 1.1,\n        \"carbohydrates\": 22.8,\n        \"fats\": 0.3,\n        \"image\": \"https://images-na.ssl-images-amazon.com/images/I/61fZ%2BYAYGaL._SL1500_.jpg\",\n        \"quantity\": 0,\n        \"calories\": \"89\"\n    },\n    {\n        \"_id\": \"5ebe7e1bfe41f4b00a68a3e0\",\n        \"item\": \"Potato\",\n        \"benefits\": \"Heart Health,Good Antioxidant\",\n        \"protein\": 2,\n        \"carbohydrates\": 17,\n        \"calories\": 77,\n        \"fats\": 0.1,\n        \"image\": \"https://rukminim1.flixcart.com/image/352/352/jtsz3bk0/vegetable/b/8/4/2-potato-un-branded-no-whole-original-imafdsymh2aepaph.jpeg?q=70\",\n        \"quantity\": 0\n    },\n    {\n        \"_id\": \"5ebe7e2afe41f4b00a68a3e1\",\n        \"item\": \"Oats\",\n        \"benefits\": \"Good Anti-Oxidant\",\n        \"protein\": 16.9,\n        \"carbohydrates\": 66.3,\n        \"calories\": 389,\n        \"fats\": 6.9,\n        \"image\": \"https://www.indianbeauty.tips/wp-content/uploads/2014/09/RolledOats.jpg\",\n        \"quantity\": 0\n    },\n    {\n        \"_id\": \"5ebe7e2bfe41f4b00a68a3e2\",\n        \"item\": \"Honey\",\n        \"benefits\": \"Healer, Soothes throat, Atletic performance\",\n        \"protein\": 0.3,\n        \"carbohydrates\": 82,\n        \"calories\": 304,\n        \"fats\": 0,\n        \"image\": \"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-183354852-1558479028.jpg\",\n        \"quantity\": 0\n    },\n    {\n        \"_id\": \"5ebe7e2bfe41f4b00a68a3e3\",\n        \"item\": \"Dates\",\n        \"benefits\": \"Bone health, Brain function, Good Anti-Oxidant\",\n        \"protein\": 2,\n        \"carbohydrates\": 75,\n        \"calories\": 277,\n        \"fats\": 0.03,\n        \"image\": \"https://ratinkhosh.com/wp-content/uploads/2019/09/What-are-dates-and-what-do-they-taste-like.jpg\",\n        \"quantity\": 0\n    },\n    {\n        \"_id\": \"5ebe7e2bfe41f4b00a68a3e4\",\n        \"item\": \"Milk\",\n        \"benefits\": \"Bone Health, Immune System, Promotes Greater gains\",\n        \"protein\": 3.4,\n        \"carbohydrates\": 5,\n        \"calories\": 42,\n        \"fats\": 1,\n        \"image\": \"https://www.readersdigest.ca/wp-content/uploads/2018/09/is-milk-good-for-you.jpg\",\n        \"quantity\": 0\n    },\n    {\n        \"_id\": \"5ebe7e2bfe41f4b00a68a3e5\",\n        \"item\": \"Banana\",\n        \"benefits\": \"Heart Health, Blood Pressure, Boosts Metabolism\",\n        \"protein\": 1.1,\n        \"carbohydrates\": 22.8,\n        \"calories\": 89,\n        \"fats\": 0.3,\n        \"image\": \"https://images-na.ssl-images-amazon.com/images/I/61fZ%2BYAYGaL._SL1500_.jpg\",\n        \"quantity\": 0\n    }\n\t\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/frame-routine",
+							"protocol": "http",
+							"host": [
+								"ec2-13-127-91-5",
+								"ap-south-1",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"frame-routine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-user-meal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n   \"Item\": \"Peanut butter\",\r\n   \"Benefits\": \"Heart Health,Good Antioxidant\",\r\n   \"Protein\": 25,\r\n   \"Carbohydrates\": 20,\r\n   \"Fats\": 0.1,\r\n   \"Calories\": 588,\r\n   \"Image\": \"https://acleanbake.com/wp-content/uploads/2014/05/How-to-Make-Peanut-Butter-Or-Another-Nut-or-Seed-Butter-10-720x720.jpg\",\r\n   \"Quantity\": 0\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:80/add-meal",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"add-meal"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Cajetan\",\n\t\"email\" : \"cajetanrodrigues88@gmail.com\",\n\t\"password\": \"cajetanrodrigues88\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:80/signup",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"cajetanrodrigues88@gmail.com\",\n\t\"password\": \"cajetanrodrigues88\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:80/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "UserDetails",
+			"item": [
+				{
+					"name": "update-bmi",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\": \"5ebf00788eea00b122f55d8e\",\n\t\"gender\" : \"Male\",\n\t\"age\" : 21,\n\t\"height\" : 190,\n\t\"heightMeasure\": \"cm\",\n\t\"weight\" : 60,\n\t\"weightMeasure\": \"kg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/add-bmi",
+							"protocol": "http",
+							"host": [
+								"ec2-13-127-91-5",
+								"ap-south-1",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"add-bmi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\": \"5ebf00788eea00b122f55d8e\",\n\t\"goal\": \"Gain Muscle\",\n\t\"activityLevel\": \"Moderate\",\n\t\"bodyType\": \"Ectomorph\",\n\t\"mealsNumber\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:80/add-info",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"add-info"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Routines",
+			"item": [
+				{
+					"name": "add-routine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\": \"5ebe89b509c414a63885de6b\",\n\t\"routineName\" : \"High Carbs Routine\",\n\t\"routineFramed\": [\n    {\n        \"time\": \"8 AM\"\n    },\n    {\n        \"_id\": \"5ebe76ef135f3abb2e814b04\",\n        \"item\": \"Milk\",\n        \"benefits\": \"Bone Health, Immune System, Promotes Greater gains\",\n        \"protein\": 3.4,\n        \"carbohydrates\": 5,\n        \"fats\": 1,\n        \"image\": \"https://www.readersdigest.ca/wp-content/uploads/2018/09/is-milk-good-for-you.jpg\",\n        \"quantity\": 0,\n        \"calories\": \"42\"\n    },\n    {\n        \"_id\": \"5ebe76ef135f3abb2e814b04\",\n        \"item\": \"Milk\",\n        \"benefits\": \"Bone Health, Immune System, Promotes Greater gains\",\n        \"protein\": 3.4,\n        \"carbohydrates\": 5,\n        \"fats\": 1,\n        \"image\": \"https://www.readersdigest.ca/wp-content/uploads/2018/09/is-milk-good-for-you.jpg\",\n        \"quantity\": 0,\n        \"calories\": \"42\"\n    },\n    {\n        \"_id\": \"5ebe76f0135f3abb2e814b05\",\n        \"item\": \"Banana\",\n        \"benefits\": \"Heart Health, Blood Pressure, Boosts Metabolism\",\n        \"protein\": 1.1,\n        \"carbohydrates\": 22.8,\n        \"fats\": 0.3,\n        \"image\": \"https://images-na.ssl-images-amazon.com/images/I/61fZ%2BYAYGaL._SL1500_.jpg\",\n        \"quantity\": 0,\n        \"calories\": \"89\"\n    },\n    {\n        \"_id\": \"5ebe76f0135f3abb2e814b05\",\n        \"item\": \"Banana\",\n        \"benefits\": \"Heart Health, Blood Pressure, Boosts Metabolism\",\n        \"protein\": 1.1,\n        \"carbohydrates\": 22.8,\n        \"fats\": 0.3,\n        \"image\": \"https://images-na.ssl-images-amazon.com/images/I/61fZ%2BYAYGaL._SL1500_.jpg\",\n        \"quantity\": 0,\n        \"calories\": \"89\"\n    },\n    {\n        \"time\": \"11 AM\"\n    },\n    {\n        \"_id\": \"5ebe7e1bfe41f4b00a68a3e0\",\n        \"item\": \"Potato\",\n        \"benefits\": \"Heart Health,Good Antioxidant\",\n        \"protein\": 2,\n        \"carbohydrates\": 17,\n        \"calories\": 77,\n        \"fats\": 0.1,\n        \"image\": \"https://rukminim1.flixcart.com/image/352/352/jtsz3bk0/vegetable/b/8/4/2-potato-un-branded-no-whole-original-imafdsymh2aepaph.jpeg?q=70\",\n        \"quantity\": 0\n    },\n    {\n        \"_id\": \"5ebe7e1bfe41f4b00a68a3e0\",\n        \"item\": \"Potato\",\n        \"benefits\": \"Heart Health,Good Antioxidant\",\n        \"protein\": 2,\n        \"carbohydrates\": 17,\n        \"calories\": 77,\n        \"fats\": 0.1,\n        \"image\": \"https://rukminim1.flixcart.com/image/352/352/jtsz3bk0/vegetable/b/8/4/2-potato-un-branded-no-whole-original-imafdsymh2aepaph.jpeg?q=70\",\n        \"quantity\": 0\n    },\n    {\n        \"_id\": \"5ebe7e2afe41f4b00a68a3e1\",\n        \"item\": \"Oats\",\n        \"benefits\": \"Good Anti-Oxidant\",\n        \"protein\": 16.9,\n        \"carbohydrates\": 66.3,\n        \"calories\": 389,\n        \"fats\": 6.9,\n        \"image\": \"https://www.indianbeauty.tips/wp-content/uploads/2014/09/RolledOats.jpg\",\n        \"quantity\": 0\n    },\n    {\n        \"_id\": \"5ebe7e2afe41f4b00a68a3e1\",\n        \"item\": \"Oats\",\n        \"benefits\": \"Good Anti-Oxidant\",\n        \"protein\": 16.9,\n        \"carbohydrates\": 66.3,\n        \"calories\": 389,\n        \"fats\": 6.9,\n        \"image\": \"https://www.indianbeauty.tips/wp-content/uploads/2014/09/RolledOats.jpg\",\n        \"quantity\": 0\n    }\n]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/add-routine",
+							"protocol": "http",
+							"host": [
+								"ec2-13-127-91-5",
+								"ap-south-1",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"add-routine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read-routines",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\": \"5ebe89b509c414a63885de6b\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/read-routines",
+							"protocol": "http",
+							"host": [
+								"ec2-13-127-91-5",
+								"ap-south-1",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"read-routines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-routine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"routineId\" : \"5ebf5631c2dbc0b8dcd3d9ca\",\n\t\"routineFramed\": [\n            {\n                \"time\": \"8 AM\"\n            },\n            {\n                \"_id\": \"5ebe76ef135f3abb2e814b04\",\n                \"item\": \"Milk\",\n                \"benefits\": \"Bone Health, Immune System, Promotes Greater gains\",\n                \"protein\": 3.4,\n                \"carbohydrates\": 5,\n                \"fats\": 1,\n                \"image\": \"https://www.readersdigest.ca/wp-content/uploads/2018/09/is-milk-good-for-you.jpg\",\n                \"quantity\": 0,\n                \"calories\": \"42\"\n            },\n            {\n                \"time\": \"11 AM\"\n            },\n            {\n                \"_id\": \"5ebe76ef135f3abb2e814b04\",\n                \"item\": \"Milk\",\n                \"benefits\": \"Bone Health, Immune System, Promotes Greater gains\",\n                \"protein\": 3.4,\n                \"carbohydrates\": 5,\n                \"fats\": 1,\n                \"image\": \"https://www.readersdigest.ca/wp-content/uploads/2018/09/is-milk-good-for-you.jpg\",\n                \"quantity\": 0,\n                \"calories\": \"42\"\n            },\n            {\n                \"_id\": \"5ebe76f0135f3abb2e814b05\",\n                \"item\": \"Banana\",\n                \"benefits\": \"Heart Health, Blood Pressure, Boosts Metabolism\",\n                \"protein\": 1.1,\n                \"carbohydrates\": 22.8,\n                \"fats\": 0.3,\n                \"image\": \"https://images-na.ssl-images-amazon.com/images/I/61fZ%2BYAYGaL._SL1500_.jpg\",\n                \"quantity\": 0,\n                \"calories\": \"89\"\n            },\n            {\n                \"_id\": \"5ebe76f0135f3abb2e814b05\",\n                \"item\": \"Banana\",\n                \"benefits\": \"Heart Health, Blood Pressure, Boosts Metabolism\",\n                \"protein\": 1.1,\n                \"carbohydrates\": 22.8,\n                \"fats\": 0.3,\n                \"image\": \"https://images-na.ssl-images-amazon.com/images/I/61fZ%2BYAYGaL._SL1500_.jpg\",\n                \"quantity\": 0,\n                \"calories\": \"89\"\n            },\n            {\n                \"_id\": \"5ebe7e1bfe41f4b00a68a3e0\",\n                \"item\": \"Potato\",\n                \"benefits\": \"Heart Health,Good Antioxidant\",\n                \"protein\": 2,\n                \"carbohydrates\": 17,\n                \"calories\": 77,\n                \"fats\": 0.1,\n                \"image\": \"https://rukminim1.flixcart.com/image/352/352/jtsz3bk0/vegetable/b/8/4/2-potato-un-branded-no-whole-original-imafdsymh2aepaph.jpeg?q=70\",\n                \"quantity\": 0\n            },\n            {\n                \"_id\": \"5ebe7e1bfe41f4b00a68a3e0\",\n                \"item\": \"Potato\",\n                \"benefits\": \"Heart Health,Good Antioxidant\",\n                \"protein\": 2,\n                \"carbohydrates\": 17,\n                \"calories\": 77,\n                \"fats\": 0.1,\n                \"image\": \"https://rukminim1.flixcart.com/image/352/352/jtsz3bk0/vegetable/b/8/4/2-potato-un-branded-no-whole-original-imafdsymh2aepaph.jpeg?q=70\",\n                \"quantity\": 0\n            },\n            {\n                \"_id\": \"5ebe7e2afe41f4b00a68a3e1\",\n                \"item\": \"Oats\",\n                \"benefits\": \"Good Anti-Oxidant\",\n                \"protein\": 16.9,\n                \"carbohydrates\": 66.3,\n                \"calories\": 389,\n                \"fats\": 6.9,\n                \"image\": \"https://www.indianbeauty.tips/wp-content/uploads/2014/09/RolledOats.jpg\",\n                \"quantity\": 0\n            },\n            {\n                \"_id\": \"5ebe7e2afe41f4b00a68a3e1\",\n                \"item\": \"Oats\",\n                \"benefits\": \"Good Anti-Oxidant\",\n                \"protein\": 16.9,\n                \"carbohydrates\": 66.3,\n                \"calories\": 389,\n                \"fats\": 6.9,\n                \"image\": \"https://www.indianbeauty.tips/wp-content/uploads/2014/09/RolledOats.jpg\",\n                \"quantity\": 0\n            }\n        ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/update-routine",
+							"protocol": "http",
+							"host": [
+								"ec2-13-127-91-5",
+								"ap-south-1",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"update-routine"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "add-profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/read-profile",
+							"protocol": "http",
+							"host": [
+								"ec2-13-127-91-5",
+								"ap-south-1",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"read-profile"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
