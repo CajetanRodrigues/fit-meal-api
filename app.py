@@ -24,27 +24,12 @@ def signup():
     name=str(data['name'])
     email=str(data['email'])
     password=str(data['password'])
-    #Name Validation
-    if(len(name)>25):
-        return json.dumps(False)
-    #Email Validation
-    if(re.search(regex,email)==False):
-        return json.dumps(False)
-    #Password Validation
-    flag = 0
-    while True:   
-        if (len(password)<8): 
-            flag = -1
-            break
-        else: 
-            flag = 0
-            print("Valid Password") 
-        break
-  
-    if flag ==-1: 
-        return json.dumps(False)
+    print(name)
+    print(email)
+    print(password)
     try:
-        users.insert({ "name": name, "email":email, "password":password},check_keys=False)
+        print("insertedv successfully")
+        users.insert_one({ "name": name, "email":email, "password":password})
     except pymongo.errors.DuplicateKeyError as e:
         print(e)
         return json.dumps(False)
@@ -185,7 +170,7 @@ def readRoutines():
     data = request.json
     userId = data['userId']
     print(userId)
-    documents =routines.find_one({"userId": userId})
+    documents =routines.find({"userId": userId})
     response = []
     for document in documents:
         print(document)
@@ -198,10 +183,11 @@ def readRoutines():
 def addRoutine():
     data = request.json
     print(data)
+    userId = data['userId']
     routineName=data['routineName']
     routineFramed=data['routineFramed']
     try:
-        routines.insert_one({"userId": "5ebe8f37357b2831267e60fc", "routineName": routineName, "routineFramed":routineFramed})
+        routines.insert_one({"userId": userId, "routineName": routineName, "routineFramed":routineFramed})
     except pymongo.errors.DuplicateKeyError as e:
         print(e)
         return json.dumps(False)
@@ -211,7 +197,7 @@ def addRoutine():
 @app.route('/frame-routine', methods = ["POST"]) 
 def frameRoutine():
     data=request.json
-    totalProtein = data["totalProtein"]
+    totalProteins = data["totalProteins"]
     totalCarbs = data["totalCarbs"]
     totalCalories = data["totalCalories"]
     
@@ -228,14 +214,22 @@ def frameRoutine():
             basketArray.append(meal)
     print(basketArray)
     # basketArray = sorted(basketArray, key=lambda k: k['calories'], reverse=True)
+    basketArrayTemp = [];
+    for meal in basketArray:
+        meal['header'] = False
+        basketArrayTemp.append(meal)
+    basketArray = basketArrayTemp
     oneCycle = {
-        "time" : "8 AM"
+        "time" : "8 AM",
+        "header": True
     }
-    oneCycleMeals = basketArray[0:int(len(basketArray)/4)]
+    oneCycleMeals = basketArray[0:int(len(basketArray)/2)]
     secondCycle = {
-        "time" : "11 AM"
+        "time" : "11 AM",
+        "header": True
     }
-    secondCycleMeals = basketArray[int(len(basketArray)/4): int(len(basketArray)/2)]
+    secondCycleMeals = basketArray[int(len(basketArray)/2): int(len(basketArray))]
+    
     routine = []
     routine.append(oneCycle)
     routine = routine + oneCycleMeals
