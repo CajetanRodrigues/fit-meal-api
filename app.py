@@ -131,12 +131,11 @@ def addInfo():
 def readMeals():
     response = []
     data = request.json;
-    skipCount = data['skipCount']
-    pageNumber = data['pageNumber']
-    if(skipCount==0) :
-        documents=meals.find().skip(skipCount*pageNumber).limit(4)
-    else:
-        documents=meals.find().skip(skipCount*pageNumber).limit(skipCount)
+    print(data)
+    pageSize = int(data["pageSize"])
+    pageNumber = int(data["pageNumber"])
+    
+    documents=meals.find().skip(pageSize*(pageNumber-1)).limit(pageSize)
     
     for document in documents:
         document['_id'] = str(document['_id'])

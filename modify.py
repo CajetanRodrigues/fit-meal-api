@@ -24,10 +24,27 @@ data = {
 headers = {
     'Content-Type' : 'application/json'
 }
-count = 0
 # print(meals.count())
 
-for i in meals.find().limit(1):
-    print(i["description"])
-    break
-print('numbers of pages with size 100 are : ' + str(count))
+for i in meals.find().limit(10):
+    print(i["description"].split(",")[0])
+    imageName = i["description"].split(",")[0]
+    r = requests.get(url = 'http://127.0.0.1:8083/image/'+imageName,
+                        headers=headers)
+    data = r.json()
+    image = data["results"][0]["urls"]
+    obj = {
+      "name": data["results"][0]["user"]["name"],
+      "profile": data["results"][0]["user"]["links"]["html"]
+    }
+
+    query = { "description": i["description"] }
+
+    imageQuery = { "$set": { "image": image } }
+    unsplashPhotographerQuery = { "$set": { "unsplash": obj } }
+
+    meals.update_one(query, imageQuery)
+    meals.update_one(query, unsplashPhotographerQuery)
+
+    print(obj)
+    print(data["results"][0]["urls"])
