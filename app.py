@@ -11,7 +11,7 @@ from datetime import datetime
 import datetime
 import pytz
 
-client = MongoClient('mongodb+srv://admin:admin@cluster0-qbkxj.mongodb.net/test?retryWrites=true&w=majority',27017)
+client = MongoClient('mongodb+srv://admin:admin@cluster0-nwyig.mongodb.net/fitmeal?retryWrites=true&w=majority',27017)
 # client=MongoClient('localhost',27017)
 db=client.fitmeal
 meals=db.meals
@@ -135,12 +135,26 @@ def readMeals():
     pageSize = int(data["pageSize"])
     pageNumber = int(data["pageNumber"])
     
-    documents=meals.find().skip(pageSize*(pageNumber-1)).limit(pageSize)
+    documents=meals.find().sort("_id", pymongo.ASCENDING).skip(pageSize*pageNumber).limit(pageSize)
     
     for document in documents:
         document['_id'] = str(document['_id'])
         response.append(document)
     return json.dumps(response)
+
+@app.route('/search', methods = ["GET"]) 
+def search():
+
+    searchTerm = request.args.get('term')
+    print(searchTerm)
+    # documents=meals.find({"description":searchTerm}).sort("_id",pymongo.ASCENDING)
+    documents=meals.find( {"description": { "$regex": searchTerm}}).limit(10)
+    response = []
+    for document in documents:
+        document['_id'] = str(document['_id'])
+        response.append(document)
+    return json.dumps(response)
+
 
 @app.route('/add-meals', methods = ["POST"]) 
 def addMeals():

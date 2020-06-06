@@ -3,7 +3,7 @@ import pymongo
 import requests 
 import json
 
-client = MongoClient('mongodb+srv://admin:admin@cluster0-qbkxj.mongodb.net/test?retryWrites=true&w=majority',27017)
+client = MongoClient('mongodb+srv://admin:admin@cluster0-nwyig.mongodb.net/fitmeal?retryWrites=true&w=majority',27017)
 # client=MongoClient('localhost',27017)
 db=client.fitmeal
 meals=db.meals
